@@ -9,6 +9,7 @@ echo Hello World
   # \e - to enable color
   # [COLm - COL is color number
   # \e[0m - Disable the color
+  # Single quotes or double quotes are mandatory, We prefer to use double quotes all the times
 
 # COL Name      Col Code
 # Red           31
