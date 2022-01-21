@@ -4,7 +4,7 @@ echo Hello World
 
 ## When we print some times we print errors and to grab attention of user it is better to print in color
 
-# Syntax : echo -e "\e[COLmMESS\[0m"
+# Syntax : echo -e "\e[COLmMESS\e[0m"
   # -e option to enable esc seq \e
   # \e - to enable color
   # [COLm - COL is color number
