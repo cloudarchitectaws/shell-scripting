@@ -7,3 +7,4 @@ else
   echo -e "\e[1;33mAvailable Inputs - frontend|mongodb|catalogue|redis|user|cart|mysql|shipping|payment|rabbitmq|dispatch\e[0m"
 fi
 
+
