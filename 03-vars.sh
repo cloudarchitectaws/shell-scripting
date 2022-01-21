@@ -11,3 +11,8 @@ echo Good Morning, Today date is $DATE
 ## Command Substitution
 DATE=$(date +%F)
 echo Good Morning, Today date is $DATE
+
+## Arthmetic Substitution
+EXPR1=$((2+3-4*5/7*8))
+echo EXPR1 OUTPUT = $EXPR1
+
