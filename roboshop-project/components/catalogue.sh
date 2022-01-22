@@ -74,3 +74,14 @@ cd /home/roboshop/catalogue
 npm install &>>$LOG_FILE
 
 chown roboshop:roboshop /home/roboshop/ -R
+
+echo "Update SystemD file"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
+
+echo "Setup Catalogue SystemD file"
+mv /home/roboshop/catalogue/systemd.service  /etc/systemd/system/catalogue.service
+
+echo "Start Catalogue"
+systemctl
+systemctl enable catalogue
+
