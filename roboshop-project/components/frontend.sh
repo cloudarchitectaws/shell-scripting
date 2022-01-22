@@ -32,6 +32,8 @@
 #
 #```
 
+rm -f /tmp/roboshop.log
+
 echo "Installing NGINX"
 yum install nginx -y >>/tmp/roboshop.log
 
