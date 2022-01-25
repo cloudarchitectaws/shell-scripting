@@ -21,7 +21,10 @@ NODEJS() {
   STAT $?
 
   echo "Create App User"
-  useradd roboshop &>>$LOG_FILE
+  id roboshop  &>>$LOG_FILE
+  if [ $? -ne 0 ]; then
+    useradd roboshop &>>$LOG_FILE
+  fi 
   STAT $?
 
   echo "Download ${COMPONENT} Code"
