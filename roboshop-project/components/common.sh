@@ -24,7 +24,7 @@ NODEJS() {
   id roboshop  &>>$LOG_FILE
   if [ $? -ne 0 ]; then
     useradd roboshop &>>$LOG_FILE
-  fi 
+  fi
   STAT $?
 
   echo "Download ${COMPONENT} Code"
