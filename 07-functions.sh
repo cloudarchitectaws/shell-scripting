@@ -6,7 +6,11 @@
 ## Declare a function
 SAMPLE() {
   echo "Welcome to DevOps training"
+  echo "Welcome to DevOps training"
+  echo "Welcome to DevOps training"
+  echo "Welcome to DevOps training"
 }
 
 ## Call the function
+SAMPLE
 SAMPLE
