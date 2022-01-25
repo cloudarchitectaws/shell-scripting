@@ -9,7 +9,7 @@ SAMPLE() {
   b=20
   echo "Welcome to DevOps training"
   echo "Welcome to DevOps training"
-  return
+  return 1
   echo "Welcome to DevOps training"
   echo "Welcome to DevOps training"
 }
@@ -27,6 +27,7 @@ SAMPLE1() {
 
 echo First Argument in Main Program = $1
 SAMPLE1 ABC
+echo $? 
 
 # 1. When you declare a variable in main program , then function can access it and modify it
 # 2. When you declare a variable in function , then you can overwrite it in main program
