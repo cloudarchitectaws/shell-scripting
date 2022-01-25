@@ -9,7 +9,7 @@ SAMPLE() {
   b=20
   echo "Welcome to DevOps training"
   echo "Welcome to DevOps training"
-  return 
+  return
   echo "Welcome to DevOps training"
   echo "Welcome to DevOps training"
 }
