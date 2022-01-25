@@ -23,11 +23,12 @@ b=10
 
 SAMPLE1() {
   echo First Argument in Function = $1
+  return 1
 }
 
 echo First Argument in Main Program = $1
 SAMPLE1 ABC
-echo $? 
+echo $?
 
 # 1. When you declare a variable in main program , then function can access it and modify it
 # 2. When you declare a variable in function , then you can overwrite it in main program
