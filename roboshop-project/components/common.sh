@@ -2,7 +2,7 @@ LOG_FILE=/tmp/roboshop.log
 rm -f $LOG_FILE
 
 ## BUG about reaching one endpoint , To fix this we are using this command
-rm -f /etc/yum.repos.d/endpoint.repo 
+rm -f /etc/yum.repos.d/endpoint.repo
 
 STAT() {
   if [ $1 -eq 0 ]; then
