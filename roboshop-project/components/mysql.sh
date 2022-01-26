@@ -68,6 +68,10 @@ echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');
 uninstall plugin validate_password;" >/tmp/pass.sql
 
 echo "Change Default Password"
-mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sql &>>$LOG_FILE
+echo 'show databases;' | mysql -uroot -pRoboShop@1 &>>$LOG_FILE
+if [ $? -ne 0 ]; then
+  mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sql &>>$LOG_FILE
+fi
 STAT $?
+
 
