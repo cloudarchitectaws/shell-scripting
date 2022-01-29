@@ -3,7 +3,9 @@
 # for
 
 for fruit in apple banana ; do
-  echo $fruit 
+  echo $fruit
 done
+
+# for loop is going to iterate number of times is based on number of inputs 
 
 # while
