@@ -27,5 +27,7 @@ STAT $?
 
 echo "Load Schema"
 cd mongodb-main
-mongo < catalogue.js &>>$LOG_FILE && mongo < users.js  &>>$LOG_FILE
+for app in catalogue users ; do
+  mongo < ${app}.js &>>$LOG_FILE
+done
 STAT $?
