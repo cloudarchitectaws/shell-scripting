@@ -37,6 +37,10 @@ echo "Create Application User"
 rabbitmqctl list_users | grep roboshop &>>$LOG_FILE
 if [ $? -ne 0 ]; then
   rabbitmqctl add_user roboshop roboshop123 &>>$LOG_FILE
-fi 
+fi
 STAT $?
 
+echo "Setup Permissions for App User"
+rabbitmqctl set_user_tags roboshop administrator &>>$LOG_FILE
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$LOG_FILE
+STAT $?
