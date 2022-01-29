@@ -106,7 +106,7 @@ PYTHON() {
   APP_USER_SETUP_WITH_APP
 
   echo "Install Python Dependencies for ${COMPONENT}"
-  cd /home/roboshop/payment
+  cd /home/roboshop/${COMPONENT}
   pip3 install -r requirements.txt &>>$LOG_FILE
   STAT $?
 
@@ -117,4 +117,23 @@ PYTHON() {
   STAT $?
 
   SYSTEMD_SETUP
+}
+
+GOLANG() {
+  COMPONENT=$1
+
+  echo "Install GoLang"
+  yum install golang -y &>>$LOG_FILE
+  STAT $?
+
+  APP_USER_SETUP_WITH_APP
+
+  echo "Build GoLang Code"
+  cd /home/roboshop/${COMPONENT}
+  go mod init dispatch &>>$LOG_FILE
+  go get  &>>$LOG_FILE
+  go build &>>$LOG_FILE
+  STAT $?
+
+
 }
