@@ -28,6 +28,5 @@ STAT $?
 
 echo "Load Schema"
 cd mongodb-main
-mongo < catalogue.js &>>$LOG_FILE
-mongo < users.js  &>>$LOG_FILE
+mongo < catalogue.js &>>$LOG_FILE && mongo < users.js  &>>$LOG_FILE
 STAT $?
