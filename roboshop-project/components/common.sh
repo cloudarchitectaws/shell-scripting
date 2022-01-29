@@ -51,9 +51,7 @@ SYSTEMD_SETUP() {
   STAT $?
 
   echo "Start ${COMPONENT} Service"
-  systemctl daemon-relaod  &>>$LOG_FILE
-  systemctl enable ${COMPONENT} &>>$LOG_FILE
-  systemctl restart ${COMPONENT} &>>$LOG_FILE
+  systemctl daemon-relaod  &>>$LOG_FILE && systemctl enable ${COMPONENT} &>>$LOG_FILE && systemctl restart ${COMPONENT} &>>$LOG_FILE
   STAT $?
 
 }
@@ -89,8 +87,7 @@ JAVA() {
 
   echo "Compile ${COMPONENT} Code"
   cd /home/roboshop/${COMPONENT}
-  mvn clean package &>>$LOG_FILE
-  mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
+  mvn clean package &>>$LOG_FILE && mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
   STAT $?
 
   SYSTEMD_SETUP
@@ -130,9 +127,7 @@ GOLANG() {
 
   echo "Build GoLang Code"
   cd /home/roboshop/${COMPONENT}
-  go mod init dispatch &>>$LOG_FILE
-  go get  &>>$LOG_FILE
-  go build &>>$LOG_FILE
+  go mod init dispatch &>>$LOG_FILE && go get  &>>$LOG_FILE && go build &>>$LOG_FILE
   STAT $?
 
   SYSTEMD_SETUP
