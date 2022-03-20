@@ -5,4 +5,4 @@
 ls
 
 VAR=SIVA
-echo "\e[31m My Name is $VAR \e[0m"
+echo -e "\e[31m My Name is $VAR \e[0m\n"
