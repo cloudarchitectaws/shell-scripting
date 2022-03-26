@@ -29,6 +29,7 @@ if [ $STATUS -ne 0 ]
   then
     echo -e "\e[31mEC2 Instance name $COMPONENT Not Created\e[0m"
   else
+    echo "\n"
     echo -e "\e[32mEC2 Instance name : $COMPONENT Created Successfully\e[0m"
 fi
 
