@@ -25,7 +25,7 @@ echo $AMID
 aws ec2 run-instances --image-id ${AMID} --instance-type t2.micro --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"| jq >>/dev/null
 STATUS=$?
 
-if [ $STATUS -ne 0]
+if [ $STATUS -ne 0 ]
   then
     echo -e "\e[31mEC2 Instance name $COMPONENT Not Created\e[0m"
   else
