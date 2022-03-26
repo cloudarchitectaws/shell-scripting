@@ -6,12 +6,13 @@
 #IF first argument $1 is not provided then it will exit with an exit value 1
 COMPONENT=$1
 if [ -z "$1" ]
-then
-  echo "Input Machine Name is needed"
-  exit 1
-else
-  echo -e "\e[31mMachine Name is $COMPONENT\e[0m"
+  then
+    echo "Input Machine Name is needed"
+    exit 1
+  else
+    echo -e "\e[31mMachine Name is $COMPONENT\e[0m"
 fi
+
 
 
 #Finding out AMI ID
