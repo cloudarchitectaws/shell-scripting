@@ -22,7 +22,15 @@ echo $AMID
 
 #Create EC2 instace using the AMIID captured using above command
 #PROVIDING the TAG specification , fetching the value from $COMPONENT variable
-aws ec2 run-instances --image-id ${AMID} --instance-type t2.micro --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"
+aws ec2 run-instances --image-id ${AMID} --instance-type t2.micro --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"| jq >>/dev/null
+STATUS=$?
+
+if [ $STATUS -ne 0]
+  then
+    echo -e "\e[31mEC2 Instance name $COMPONENT Not Created\e[0m"
+  else
+    echo -e "\e32mEC2 Instance name : $COMPONENT Created Successfully\e[0m"
+fi
 
 
 
