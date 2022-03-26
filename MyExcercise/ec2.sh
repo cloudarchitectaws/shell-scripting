@@ -17,12 +17,26 @@ fi
 
 #Finding out AMI ID
 
-AMID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
+AMID=$(aws ec2 describe-images \
+--filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
 echo $AMID
+
+#Finding out the Security Group
+#Under Security Group , inside Bracket [] , GroupId we need to select and the using
+#using sed command search for double Quotes " and replace with empty globally to removed the double quotes
+
+SGID=$(aws ec2 describe-security-groups --filters "Name=group-name,Values=All_Group" | jq '.SecurityGroups[].GroupId' | sed -e 's/"//g')
+echo $SGID
 
 #Create EC2 instace using the AMIID captured using above command
 #PROVIDING the TAG specification , fetching the value from $COMPONENT variable
-aws ec2 run-instances --image-id ${AMID} --instance-type t2.micro --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"| jq >>/dev/null
+#Enhacing the command for Spot instance and Security group
+aws ec2 run-instances --image-id ${AMID} \
+  --instance-type t2.micro \
+  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" \
+  --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop})" \
+  --security-group-ids ${SGID} \
+   | jq >>/dev/null
 STATUS=$?
 
 if [ $STATUS -ne 0 ]
@@ -32,6 +46,9 @@ if [ $STATUS -ne 0 ]
     echo
     echo -e "\e[32mEC2 Instance name : $COMPONENT Created Successfully\e[0m"
 fi
+
+#echo -e "\e[34m****** Terminating $COMPONENT EC2 Instance\e[0m"
+
 
 
 
