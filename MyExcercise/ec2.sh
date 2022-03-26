@@ -10,7 +10,6 @@ then
   echo "Input Machine Name is needed"
   exit 1
 else
-then
   echo -e "\e[31mMachine Name is $COMPONENT\e[0m"
 fi
 
