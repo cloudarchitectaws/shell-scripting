@@ -4,13 +4,13 @@
 #While Running this script input parameter needs to added (for Eg: which machine needs to create eg: cart/user/../../)
 #Checking whether the machine name provided or not if not provided then below piece of code will exit
 #IF first argument $1 is not provided then it will exit with an exit value 1
-
+COMPONENT=$1
 if [ -z "$1" ]
 then
   echo "Input Machine Name is needed"
   exit 1
 fi
-COMPONENT=$1
+
 
 #Finding out AMI ID
 
